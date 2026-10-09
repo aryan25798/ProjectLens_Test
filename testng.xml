@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ProjectLens Automation Suite" parallel="none">
+    <test name="Login Module Tests">
+        <classes>
+            <class name="com.example.tests.LoginTest"/>
+        </classes>
+    </test>
+    <test name="Trainer Review Workflow Tests">
+        <classes>
+            <class name="com.example.tests.TrainerReviewTest"/>
+        </classes>
+    </test>
+</suite>
