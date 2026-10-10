@@ -180,15 +180,212 @@ public class ExcelDataInitializer {
                     row.createCell(c).setCellValue(trData[r][c]);
                 }
             }
-            for (int i = 0; i < trHeaders.length; i++) {
-                trainerSheet.autoSizeColumn(i);
+            // ==========================================
+            // SHEET 4: Form Validation Workflow (PL-04, PL-05, PL-06, PL-07)
+            // ==========================================
+            Sheet formValSheet = workbook.createSheet("FormValidationWorkflow");
+
+            Row fvHeader = formValSheet.createRow(0);
+            String[] fvHeaders = {
+                "TC_ID",
+                "Scenario",
+                "User_Email",
+                "User_Password",
+                "Project_Title",
+                "Problem_Statement",
+                "Objectives",
+                "Tech_Stack",
+                "Doc_Link",
+                "Expected_Result",
+                "Expected_Status",
+                "Expected_Cohort_Title",
+                "Expected_Min_Alignment"
+            };
+            for (int i = 0; i < fvHeaders.length; i++) {
+                fvHeader.createCell(i).setCellValue(fvHeaders[i]);
+            }
+
+            String[][] fvData = {
+                {
+                    "PL-04",
+                    "Open the new project submission page",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "The form opens for the Pod Lead and displays the active cohort criteria and the 70% minimum alignment requirement.",
+                    "/submit",
+                    "AI-Assisted Engineering",
+                    "70%"
+                },
+                {
+                    "PL-05",
+                    "Submit the form with required information missing",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Project title, problem statement, objectives and technology stack are validated. Submission is blocked until the required fields are completed; the documentation link remains optional.",
+                    "Please complete all required fields.",
+                    "",
+                    ""
+                },
+                {
+                    "PL-06",
+                    "Submit a complete project idea",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "CloudAuto QA Platform",
+                    "Software engineering teams face continuous delivery delays due to slow manual QA testing cycles. This platform automates regression workflows and provides real-time failure insights.",
+                    "1. Automate 100% of critical core business workflows. 2. Integrate continuous feedback and defect detection. 3. Reduce manual regression effort by 60%.",
+                    "Java, Spring Boot, Angular, REST API",
+                    "https://github.com/projectlens/cloudauto-qa",
+                    "The submission is saved, evaluation is initiated and the project appears in the Pod Lead's submissions list with its current status.",
+                    "/submissions",
+                    "",
+                    ""
+                },
+                {
+                    "PL-07",
+                    "Verify a project evaluated below 70% alignment",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "The project is marked Needs Revision and the result clearly shows the score, analysis summary, matched criteria and missing criteria.",
+                    "NEEDS_REVISION",
+                    "",
+                    "70%"
+                }
+            };
+
+            for (int r = 0; r < fvData.length; r++) {
+                Row row = formValSheet.createRow(r + 1);
+                for (int c = 0; c < fvData[r].length; c++) {
+                    row.createCell(c).setCellValue(fvData[r][c]);
+                }
+            }
+            for (int i = 0; i < fvHeaders.length; i++) {
+                formValSheet.autoSizeColumn(i);
+            }
+
+            // ==========================================
+            // SHEET 5: Notification Module Workflow (TC_NOTIF_01 to TC_NOTIF_07)
+            // ==========================================
+            Sheet notifSheet = workbook.createSheet("NotificationWorkflow");
+
+            Row notifHeader = notifSheet.createRow(0);
+            String[] notifHeaders = {
+                "TC_ID",
+                "Scenario",
+                "User_Email",
+                "User_Password",
+                "Expected_Result",
+                "Expected_URL_Fraction",
+                "Expected_Alert_Keyword",
+                "Assigned_Pod"
+            };
+            for (int i = 0; i < notifHeaders.length; i++) {
+                notifHeader.createCell(i).setCellValue(notifHeaders[i]);
+            }
+
+            String[][] notifData = {
+                {
+                    "TC_NOTIF_01",
+                    "Open Notifications Page",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Notifications page opens and displays a chronological list of recent updates with date and time.",
+                    "/notifications",
+                    "Notifications",
+                    "Pod Alpha"
+                },
+                {
+                    "TC_NOTIF_02",
+                    "Low Score Alert (< 70%)",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Alert displays: Your project idea '[Idea Name]' needs improvement. Alignment score: [X]%. Please revise and reupload.",
+                    "/notifications",
+                    "needs improvement. Alignment score:",
+                    "Pod Alpha"
+                },
+                {
+                    "TC_NOTIF_03",
+                    "High Score Alert (>= 70%)",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Alert displays: Your project idea '[Idea Name]' qualified for trainer review with an alignment score of [X]%.",
+                    "/notifications",
+                    "qualified for trainer review with an alignment score of",
+                    "Pod Alpha"
+                },
+                {
+                    "TC_NOTIF_04",
+                    "Trainer Decision Alert",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Alert displays trainer's decision, e.g., Trainer decision for '[Idea Name]': Approved.",
+                    "/notifications",
+                    "Trainer decision for",
+                    "Pod Alpha"
+                },
+                {
+                    "TC_NOTIF_05",
+                    "Mark Notification as Read",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Notification status updates to 'Read'.",
+                    "/notifications",
+                    "Read",
+                    "Pod Alpha"
+                },
+                {
+                    "TC_NOTIF_06",
+                    "Refresh Notifications List",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Page refreshes and fetches the latest notifications.",
+                    "/notifications",
+                    "Refresh",
+                    "Pod Alpha"
+                },
+                {
+                    "TC_NOTIF_07",
+                    "Pod Isolation Check",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Pod Lead only sees notifications belonging to their assigned Pod and zero notifications from other pods.",
+                    "/notifications",
+                    "Pod Alpha",
+                    "Pod Alpha"
+                }
+            };
+
+            for (int r = 0; r < notifData.length; r++) {
+                Row row = notifSheet.createRow(r + 1);
+                for (int c = 0; c < notifData[r].length; c++) {
+                    row.createCell(c).setCellValue(notifData[r][c]);
+                }
+            }
+            for (int i = 0; i < notifHeaders.length; i++) {
+                notifSheet.autoSizeColumn(i);
             }
 
             try (FileOutputStream fos = new FileOutputStream(filePath)) {
                 workbook.write(fos);
             }
 
-            System.out.println("TestData.xlsx successfully generated with 3 sheets at: " + filePath);
+            System.out.println("TestData.xlsx successfully generated with 5 sheets at: " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
