@@ -20,6 +20,7 @@
         <poi.version>5.3.0</poi.version>
         <log4j.version>2.24.1</log4j.version>
         <extent.version>5.1.2</extent.version>
+        <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
 
     <dependencies>
@@ -89,10 +90,55 @@
                 <version>3.5.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Full Master Suite (Default) -->
+        <profile>
+            <id>all</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteXmlFile>testng.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- Login Module Only -->
+        <profile>
+            <id>login</id>
+            <properties>
+                <suiteXmlFile>testng-login.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- Trainer Review Module Only -->
+        <profile>
+            <id>trainer</id>
+            <properties>
+                <suiteXmlFile>testng-trainer.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- Form Validation Module Only -->
+        <profile>
+            <id>form</id>
+            <properties>
+                <suiteXmlFile>testng-form-validation.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- Notification Module Only -->
+        <profile>
+            <id>notifications</id>
+            <properties>
+                <suiteXmlFile>testng-notifications.xml</suiteXmlFile>
+            </properties>
+        </profile>
+    </profiles>
 </project>

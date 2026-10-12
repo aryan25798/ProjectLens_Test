@@ -12,35 +12,55 @@ Industry-grade **Maven Page Object Model (POM)** test automation framework setup
 - `src/test/resources/testdata/`: Test data assets (`TestData.xlsx`, `users.json`, etc.)
 - `src/test/resources/log4j2.xml`: Logger configuration
 
-## Execution
-Run all tests via Master TestNG Suite:
-```bash
-mvn test -Dsurefire.suiteXmlFiles=testng.xml
-```
+## Execution Options
 
-Run modules individually:
-- **Login Flow:**
+### Option 1: Using Maven Profiles (Recommended for All Laptops & Terminals)
+No quotes, dots, or escaping needed. Works identically in Windows PowerShell, CMD, Git Bash, Mac, and Linux:
+
+* **All Modules (Full Suite):**
   ```bash
-  mvn test -Dsurefire.suiteXmlFiles=testng-login.xml
+  mvn test
+  # or
+  mvn test -Pall
   ```
-- **Trainer Review Flow:**
+* **Login Module Only:**
   ```bash
-  mvn test -Dsurefire.suiteXmlFiles=testng-trainer.xml
+  mvn test -Plogin
   ```
-- **Form Validation Workflow (PL-04 to PL-07):**
+* **Trainer Review Module Only:**
   ```bash
-  mvn test -Dsurefire.suiteXmlFiles=testng-form-validation.xml
+  mvn test -Ptrainer
   ```
-- **Notification Workflow (TC_NOTIF_01 to TC_NOTIF_07):**
+* **Form Validation Module Only:**
   ```bash
-  mvn test -Dsurefire.suiteXmlFiles=testng-notifications.xml
+  mvn test -Pform
+  ```
+* **Notification Module Only:**
+  ```bash
+  mvn test -Pnotifications
   ```
 
-> [!NOTE]
-> **Windows PowerShell Users:** Wrap system properties with quotes to avoid dot-parsing errors:
-> ```powershell
-> mvn test "-Dsurefire.suiteXmlFiles=testng-notifications.xml"
-> ```
+---
+
+### Option 2: 1-Click Batch Runners (Windows)
+Double-click or run from terminal in project root:
+* `run-all.bat` - Runs full master test suite
+* `run-login.bat` - Runs Login module only
+* `run-trainer.bat` - Runs Trainer Review module only
+* `run-form.bat` - Runs Form Validation module only
+* `run-notifications.bat` - Runs Notification module only
+
+---
+
+### Option 3: Dynamic Suite Property (`-DsuiteXmlFile`)
+* **Windows PowerShell:**
+  ```powershell
+  mvn test "-DsuiteXmlFile=testng-trainer.xml"
+  ```
+* **CMD / Bash:**
+  ```bash
+  mvn test -DsuiteXmlFile=testng-trainer.xml
+  ```
 
 ## Test Reports & Remarks
 After test execution, comprehensive reports with pass/fail status, execution time, and failure remarks/screenshots are generated at:
