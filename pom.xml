@@ -21,6 +21,7 @@
         <log4j.version>2.24.1</log4j.version>
         <extent.version>5.1.2</extent.version>
         <suiteXmlFile>testng.xml</suiteXmlFile>
+        <surefire.suiteXmlFiles>${suiteXmlFile}</surefire.suiteXmlFiles>
     </properties>
 
     <dependencies>
@@ -90,7 +91,7 @@
                 <version>3.5.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>${surefire.suiteXmlFiles}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
