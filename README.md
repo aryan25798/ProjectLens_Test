@@ -39,6 +39,10 @@ No quotes, dots, or escaping needed. Works identically in Windows PowerShell, CM
   ```bash
   mvn test -Pnotifications
   ```
+* **Revise Submission Module Only (TC01 to TC06):**
+  ```bash
+  mvn test -Previse
+  ```
 
 ---
 
@@ -49,6 +53,7 @@ Double-click or run from terminal in project root:
 * `run-trainer.bat` - Runs Trainer Review module only
 * `run-form.bat` - Runs Form Validation module only
 * `run-notifications.bat` - Runs Notification module only
+* `run-revise.bat` - Runs Revise Submission module only
 
 ---
 

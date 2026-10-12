@@ -100,4 +100,27 @@ public class DataProviders {
         ExcelReader excel = new ExcelReader(EXCEL_PATH);
         return excel.getTestCaseData("NotificationWorkflow", tcId);
     }
+
+    /**
+     * DataProvider for Revise Workflow from ReviseWorkflow sheet.
+     */
+    @DataProvider(name = "reviseWorkflowDDT")
+    public static Object[][] getReviseWorkflowData() {
+        ExcelReader excel = new ExcelReader(EXCEL_PATH);
+        List<Map<String, String>> data = excel.getData("ReviseWorkflow");
+
+        Object[][] testData = new Object[data.size()][1];
+        for (int i = 0; i < data.size(); i++) {
+            testData[i][0] = data.get(i);
+        }
+        return testData;
+    }
+
+    /**
+     * Get specific Revise test case data from Excel.
+     */
+    public static Map<String, String> getReviseTestCaseData(String tcId) {
+        ExcelReader excel = new ExcelReader(EXCEL_PATH);
+        return excel.getTestCaseData("ReviseWorkflow", tcId);
+    }
 }

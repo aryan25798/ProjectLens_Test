@@ -377,15 +377,125 @@ public class ExcelDataInitializer {
                     row.createCell(c).setCellValue(notifData[r][c]);
                 }
             }
-            for (int i = 0; i < notifHeaders.length; i++) {
-                notifSheet.autoSizeColumn(i);
+            // ==========================================
+            // SHEET 6: Revise Submission Workflow (TC01 to TC06)
+            // ==========================================
+            Sheet reviseSheet = workbook.createSheet("ReviseWorkflow");
+
+            Row reviseHeader = reviseSheet.createRow(0);
+            String[] reviseHeaders = {
+                "TC_ID",
+                "Scenario",
+                "User_Email",
+                "User_Password",
+                "Preconditions",
+                "Test_Steps",
+                "Expected_Result",
+                "Expected_URL_Fraction",
+                "Modified_Field",
+                "Modified_Value",
+                "Expected_Validation_Message"
+            };
+            for (int i = 0; i < reviseHeaders.length; i++) {
+                reviseHeader.createCell(i).setCellValue(reviseHeaders[i]);
+            }
+
+            String[][] reviseData = {
+                {
+                    "TC01",
+                    "Verify Revise option is available",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Pod Lead is logged in and has an existing submission.",
+                    "1. Open Submissions. 2. Select the required submission. 3. Click Revise option.",
+                    "Revise option should be available and the submission should open in editable mode.",
+                    "/submit?revise=",
+                    "",
+                    "",
+                    ""
+                },
+                {
+                    "TC02",
+                    "Verify existing project details are displayed",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Submission is opened in Revise mode.",
+                    "1. Check Project Title. 2. Check Problem Statement, Objectives, Technology Stack and Documentation Link.",
+                    "Previously entered project details should be displayed correctly.",
+                    "/submit?revise=",
+                    "",
+                    "",
+                    ""
+                },
+                {
+                    "TC03",
+                    "Verify project details can be modified",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Submission is in Revise mode.",
+                    "1. Modify one or more project details. 2. Click Save/Continue.",
+                    "Updated details should be accepted successfully.",
+                    "/submit?revise=",
+                    "problemStatement",
+                    "Updated Problem Statement: Enterprise platform addressing delivery bottlenecks through automated QA and AI validation.",
+                    ""
+                },
+                {
+                    "TC04",
+                    "Verify mandatory field validation",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Submission is in Revise mode.",
+                    "1. Clear a mandatory field. 2. Click Re-upload/Submit.",
+                    "Validation message should be displayed and submission should be prevented.",
+                    "/submit?revise=",
+                    "projectTitle",
+                    "",
+                    "Please complete all required fields."
+                },
+                {
+                    "TC05",
+                    "Verify revised project can be re-uploaded",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Submission requires revision/re-upload.",
+                    "1. Revise the project details. 2. Correct the required information. 3. Click Re-upload/Submit.",
+                    "Revised project should be uploaded successfully and a confirmation message should be displayed.",
+                    "/submit?revise=",
+                    "objectives",
+                    "1. Automate 100% of workflows. 2. Real-time telemetry. 3. Continuous defect prevention.",
+                    "Analysis"
+                },
+                {
+                    "TC06",
+                    "Verify updated submission and status after re-upload",
+                    "alpha@projectlens.local",
+                    "PodLead@123",
+                    "Revised project has been successfully re-uploaded.",
+                    "1. Open Submissions. 2. Open the revised submission. 3. Check project details and status.",
+                    "Latest project details and updated submission status should be displayed correctly.",
+                    "/submissions",
+                    "",
+                    "",
+                    ""
+                }
+            };
+
+            for (int r = 0; r < reviseData.length; r++) {
+                Row row = reviseSheet.createRow(r + 1);
+                for (int c = 0; c < reviseData[r].length; c++) {
+                    row.createCell(c).setCellValue(reviseData[r][c]);
+                }
+            }
+            for (int i = 0; i < reviseHeaders.length; i++) {
+                reviseSheet.autoSizeColumn(i);
             }
 
             try (FileOutputStream fos = new FileOutputStream(filePath)) {
                 workbook.write(fos);
             }
 
-            System.out.println("TestData.xlsx successfully generated with 5 sheets at: " + filePath);
+            System.out.println("TestData.xlsx successfully generated with 6 sheets at: " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }

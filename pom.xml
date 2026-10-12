@@ -155,5 +155,19 @@
                 <suiteXmlFile>testng-form-validation.xml</suiteXmlFile>
             </properties>
         </profile>
+
+        <!-- Revise Submission Module Only -->
+        <profile>
+            <id>revise</id>
+            <properties>
+                <suiteXmlFile>testng-revise.xml</suiteXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>revision</id>
+            <properties>
+                <suiteXmlFile>testng-revise.xml</suiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
 </project>

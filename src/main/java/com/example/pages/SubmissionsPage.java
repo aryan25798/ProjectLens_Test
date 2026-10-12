@@ -140,4 +140,59 @@ public class SubmissionsPage extends BasePage {
             return "";
         }
     }
+
+    private final By reviseButtonLocator = By.cssSelector("a.revise-button, button.revise-button, a[href*='revise']");
+
+    public boolean hasReviseOption() {
+        waitForSubmissionsToLoad();
+        List<WebElement> buttons = driver.findElements(reviseButtonLocator);
+        return !buttons.isEmpty();
+    }
+
+    public List<WebElement> getAllReviseButtons() {
+        waitForSubmissionsToLoad();
+        return driver.findElements(reviseButtonLocator);
+    }
+
+    public void clickFirstReviseButton() {
+        waitForSubmissionsToLoad();
+        WebElement btn = WaitUtils.waitForElementVisible(driver, reviseButtonLocator, 10);
+        try {
+            btn.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true); arguments[0].click();", btn);
+        }
+        WaitUtils.waitForUrlContains(driver, "revise", 10);
+    }
+
+    public String getFirstReviseHref() {
+        waitForSubmissionsToLoad();
+        List<WebElement> buttons = driver.findElements(reviseButtonLocator);
+        if (!buttons.isEmpty()) {
+            return buttons.get(0).getAttribute("href");
+        }
+        return "";
+    }
+
+    public boolean isReviseButtonPresentForProject(String projectTitle) {
+        WebElement card = getSubmissionCardByTitle(projectTitle);
+        if (card != null) {
+            List<WebElement> revBtns = card.findElements(reviseButtonLocator);
+            return !revBtns.isEmpty();
+        }
+        return false;
+    }
+
+    public void clickReviseForProject(String projectTitle) {
+        WebElement card = getSubmissionCardByTitle(projectTitle);
+        if (card != null) {
+            WebElement btn = card.findElement(reviseButtonLocator);
+            try {
+                btn.click();
+            } catch (Exception e) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true); arguments[0].click();", btn);
+            }
+            WaitUtils.waitForUrlContains(driver, "revise", 10);
+        }
+    }
 }

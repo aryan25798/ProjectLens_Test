@@ -24,4 +24,9 @@
             <class name="com.example.tests.NotificationTest"/>
         </classes>
     </test>
+    <test name="Revise Submission Workflow Tests">
+        <classes>
+            <class name="com.example.tests.ReviseSubmissionTest"/>
+        </classes>
+    </test>
 </suite>
