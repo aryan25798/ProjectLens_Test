@@ -30,9 +30,25 @@ public class ReportManager {
             spark.config().setTheme(Theme.STANDARD);
             spark.config().setTimeStampFormat("yyyy-MM-dd HH:mm:ss");
             spark.config().setCss(
-                ".header { background-color: #1a365d !important; } " +
-                ".nav-logo { font-weight: bold; font-size: 16px; color: #fff; } " +
-                ".badge-category { font-size: 11px; padding: 4px 8px; border-radius: 4px; }"
+                ":root { --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); --badge-bg: #e2e8f0; } " +
+                ".header { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.15); } " +
+                ".nav-logo { font-weight: 800; font-size: 18px; color: #38bdf8 !important; letter-spacing: 0.5px; } " +
+                ".nav-logo span { color: #f8fafc; font-weight: 500; } " +
+                ".badge-category { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; background: #e0f2fe !important; color: #0369a1 !important; border: 1px solid #bae6fd; } " +
+                ".badge-author { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600; background: #fef3c7 !important; color: #b45309 !important; border: 1px solid #fde68a; } " +
+                ".badge-device { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600; background: #f1f5f9 !important; color: #475569 !important; border: 1px solid #cbd5e1; } " +
+                ".card { border-radius: 10px !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important; border: 1px solid #e2e8f0 !important; } " +
+                ".table { border-collapse: separate; border-spacing: 0; } " +
+                ".test-item { transition: all 0.2s ease; border-left: 4px solid transparent; } " +
+                ".test-item:hover { transform: translateX(3px); background: #f8fafc; } " +
+                ".test-status.pass { border-left-color: #22c55e !important; } " +
+                ".test-status.fail { border-left-color: #ef4444 !important; } " +
+                ".test-status.skip { border-left-color: #f59e0b !important; } " +
+                ".test-detail { padding: 18px !important; } " +
+                ".param-badge { display: inline-block; padding: 3px 8px; margin: 2px; border-radius: 6px; font-size: 11px; font-family: monospace; } " +
+                ".status-pill-pass { background:#dcfce7; color:#15803d; padding:3px 10px; border-radius:12px; font-weight:bold; font-size:12px; display:inline-block; } " +
+                ".status-pill-fail { background:#fee2e2; color:#b91c1c; padding:3px 10px; border-radius:12px; font-weight:bold; font-size:12px; display:inline-block; } " +
+                ".status-pill-skip { background:#fef3c7; color:#b45309; padding:3px 10px; border-radius:12px; font-weight:bold; font-size:12px; display:inline-block; }"
             );
 
             extent = new ExtentReports();
