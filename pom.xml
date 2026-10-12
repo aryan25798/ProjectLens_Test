@@ -141,5 +141,19 @@
                 <suiteXmlFile>testng-notifications.xml</suiteXmlFile>
             </properties>
         </profile>
+        <profile>
+            <id>notification</id>
+            <properties>
+                <suiteXmlFile>testng-notifications.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- Validation Alias -->
+        <profile>
+            <id>validation</id>
+            <properties>
+                <suiteXmlFile>testng-form-validation.xml</suiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
 </project>
