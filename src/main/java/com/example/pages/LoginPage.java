@@ -1,5 +1,6 @@
 package com.example.pages;
 
+import com.example.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -39,7 +40,12 @@ public class LoginPage extends BasePage {
     }
 
     public void clickSignIn() {
-        click(signInBtn);
+        org.openqa.selenium.WebElement btn = WaitUtils.waitForElementClickable(driver, signInBtn, 10);
+        try {
+            btn.click();
+        } catch (Exception e) {
+            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true); arguments[0].click();", btn);
+        }
     }
 
     public boolean isSignInButtonEnabled() {
@@ -61,10 +67,20 @@ public class LoginPage extends BasePage {
     }
 
     public String getErrorMessage() {
-        return getText(errorMessageAlert);
+        try {
+            return getText(errorMessageAlert);
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     public boolean isErrorMessageDisplayed() {
-        return isDisplayed(errorMessageAlert);
+        for (int i = 0; i < 10; i++) {
+            if (isDisplayed(errorMessageAlert)) {
+                return true;
+            }
+            try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+        }
+        return false;
     }
 }

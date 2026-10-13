@@ -17,10 +17,19 @@ public class DashboardPage extends BasePage {
     }
 
     public boolean isDashboardLoaded() {
-        return WaitUtils.waitForUrlContains(driver, "dashboard", 10) 
-            || WaitUtils.waitForUrlContains(driver, "trainer", 10)
-            || WaitUtils.waitForUrlContains(driver, "pod", 10)
-            || WaitUtils.waitForUrlContains(driver, "reviews", 10);
+        for (int i = 0; i < 20; i++) {
+            String url = driver.getCurrentUrl().toLowerCase();
+            if (url.contains("dashboard") || url.contains("trainer") || url.contains("pod") || url.contains("reviews") || url.contains("submissions") || url.contains("notifications")) {
+                return true;
+            }
+            if (isDisplayed(signOutButton) || isDisplayed(sidebarWorkspace)) {
+                return true;
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ignored) {}
+        }
+        return false;
     }
 
     public void logout() {
