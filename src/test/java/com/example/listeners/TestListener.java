@@ -9,13 +9,26 @@ import com.example.utils.ReportManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.util.Map;
 
-public class TestListener implements ITestListener {
+public class TestListener implements ITestListener, ISuiteListener {
+
+    @Override
+    public void onStart(ISuite suite) {
+        String suiteName = suite != null ? suite.getName() : "Test Suite";
+        ReportManager.getInstance(suiteName);
+    }
+
+    @Override
+    public void onFinish(ISuite suite) {
+        ReportManager.flush();
+    }
 
     @Override
     public void onStart(ITestContext context) {

@@ -14,14 +14,13 @@ public class ReportManager {
 
     public static synchronized ExtentReports getInstance(String suiteName) {
         if (extent == null) {
-            String reportDir = "test-output";
-            File dir = new File(reportDir);
+            File dir = new File(System.getProperty("user.dir"), "test-output");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
 
-            String reportPath = reportDir + "/ExecutionReport.html";
-            ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
+            File reportFile = new File(dir, "ExecutionReport.html");
+            ExtentSparkReporter spark = new ExtentSparkReporter(reportFile);
             String title = (suiteName != null && !suiteName.isEmpty())
                     ? "ProjectLens - " + suiteName
                     : "ProjectLens Test Automation Report";
@@ -79,9 +78,24 @@ public class ReportManager {
         testThread.set(test);
     }
 
-    public static void flush() {
+    public static synchronized void flush() {
         if (extent != null) {
-            extent.flush();
+            try {
+                extent.flush();
+                File reportFile = new File(new File(System.getProperty("user.dir"), "test-output"), "ExecutionReport.html");
+                System.out.println("[ProjectLens] HTML Test Report successfully written: " + reportFile.getAbsolutePath());
+            } catch (Exception e) {
+                System.err.println("Warning: Error flushing ExtentReports: " + e.getMessage());
+            }
+        }
+    }
+
+    public static synchronized void reset() {
+        if (extent != null) {
+            try {
+                extent.flush();
+            } catch (Exception ignored) {}
+            extent = null;
         }
     }
 }

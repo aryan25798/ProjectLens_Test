@@ -93,6 +93,12 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${surefire.suiteXmlFiles}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>com.example.listeners.TestListener</value>
+                        </property>
+                    </properties>
                 </configuration>
             </plugin>
         </plugins>
