@@ -195,4 +195,12 @@ public class SubmissionsPage extends BasePage {
             WaitUtils.waitForUrlContains(driver, "revise", 10);
         }
     }
+
+    public String getCardTextByTitle(String projectTitle) {
+        WebElement card = getSubmissionCardByTitle(projectTitle);
+        if (card != null) {
+            return card.getText().trim();
+        }
+        return "";
+    }
 }

@@ -123,4 +123,27 @@ public class DataProviders {
         ExcelReader excel = new ExcelReader(EXCEL_PATH);
         return excel.getTestCaseData("ReviseWorkflow", tcId);
     }
+
+    /**
+     * DataProvider for Form Data Updation Workflow from FormDataUpdationWorkflow sheet.
+     */
+    @DataProvider(name = "formDataUpdationDDT")
+    public static Object[][] getFormDataUpdationData() {
+        ExcelReader excel = new ExcelReader(EXCEL_PATH);
+        List<Map<String, String>> data = excel.getData("FormDataUpdationWorkflow");
+
+        Object[][] testData = new Object[data.size()][1];
+        for (int i = 0; i < data.size(); i++) {
+            testData[i][0] = data.get(i);
+        }
+        return testData;
+    }
+
+    /**
+     * Get specific Form Data Updation test case data from Excel.
+     */
+    public static Map<String, String> getFormDataUpdationTestCaseData(String tcId) {
+        ExcelReader excel = new ExcelReader(EXCEL_PATH);
+        return excel.getTestCaseData("FormDataUpdationWorkflow", tcId);
+    }
 }

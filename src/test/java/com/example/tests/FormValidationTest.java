@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import com.example.base.BaseTest;
+import com.example.pages.DashboardPage;
 import com.example.pages.LoginPage;
 import com.example.pages.ProjectSubmissionPage;
 import com.example.pages.SubmissionsPage;
@@ -24,6 +25,9 @@ public class FormValidationTest extends BaseTest {
         Map<String, String> data = DataProviders.getFormValidationTestCaseData("PL-04");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(data.get("User_Email"), data.get("User_Password"));
+
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.isDashboardLoaded();
 
         submissionPage = new ProjectSubmissionPage(driver);
         submissionsPage = new SubmissionsPage(driver);

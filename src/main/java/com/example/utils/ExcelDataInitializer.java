@@ -491,11 +491,191 @@ public class ExcelDataInitializer {
                 reviseSheet.autoSizeColumn(i);
             }
 
+            // ==========================================
+            // SHEET 7: Form Data Updation Workflow (FDU_01 to FDU_10)
+            // ==========================================
+            Sheet fduSheet = workbook.createSheet("FormDataUpdationWorkflow");
+
+            Row fduHeader = fduSheet.createRow(0);
+            String[] fduHeaders = {
+                "TC_ID",
+                "Test_Case",
+                "Expected_Result",
+                "Pod_Lead_Email",
+                "Pod_Lead_Password",
+                "Pod_Member_Email",
+                "Pod_Member_Password",
+                "Trainer_Email",
+                "Trainer_Password",
+                "Project_Title",
+                "Problem_Statement",
+                "Objectives",
+                "Tech_Stack",
+                "Doc_Link",
+                "Assigned_Pod"
+            };
+            for (int i = 0; i < fduHeaders.length; i++) {
+                fduHeader.createCell(i).setCellValue(fduHeaders[i]);
+            }
+
+            String[][] fduData = {
+                {
+                    "FDU_01",
+                    "Submit project details and verify data is stored",
+                    "Project details are successfully saved in the system",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_02",
+                    "Verify Project Title is updated after submission",
+                    "Project Title is displayed correctly wherever the submission is viewed",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_03",
+                    "Verify Problem Statement is updated after submission",
+                    "Problem Statement is stored and displayed correctly",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_04",
+                    "Verify Supporting Documentation Link is updated after submission",
+                    "Documentation Link is stored and displayed correctly",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_05",
+                    "Verify submitted data in Pod Lead view",
+                    "Pod Lead can view the submitted details correctly",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_06",
+                    "Verify submitted data in Pod Member view",
+                    "Pod Member sees the same updated submission details",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_07",
+                    "Verify submitted data in Trainer view",
+                    "Trainer sees the same updated submission details",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_08",
+                    "Verify data consistency across all roles",
+                    "Data displayed in Pod Lead, Pod Member, and Trainer views should match exactly",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_09",
+                    "Verify data persists after page refresh",
+                    "Submitted data remains unchanged after refresh",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                },
+                {
+                    "FDU_10",
+                    "Verify data persists after logout and login",
+                    "Submitted data remains available after logging in again",
+                    "alpha@projectlens.local", "PodLead@123",
+                    "alpha.member@projectlens.local", "Member@123",
+                    "trainer@projectlens.local", "Trainer@123",
+                    "OmniChannel AI Assistant",
+                    "Customer service departments suffer from high response latencies and fragmented omnichannel conversation history.",
+                    "1. Automate 80% repetitive queries. 2. Unified context across WhatsApp, Web and Email. 3. Real-time agent assist.",
+                    "Java, Spring Boot, React, PostgreSQL",
+                    "https://github.com/example/omnichannel-ai-specs",
+                    "Innovex"
+                }
+            };
+
+            for (int r = 0; r < fduData.length; r++) {
+                Row row = fduSheet.createRow(r + 1);
+                for (int c = 0; c < fduData[r].length; c++) {
+                    row.createCell(c).setCellValue(fduData[r][c]);
+                }
+            }
+            for (int i = 0; i < fduHeaders.length; i++) {
+                fduSheet.autoSizeColumn(i);
+            }
+
             try (FileOutputStream fos = new FileOutputStream(filePath)) {
                 workbook.write(fos);
             }
 
-            System.out.println("TestData.xlsx successfully generated with 6 sheets at: " + filePath);
+            System.out.println("TestData.xlsx successfully generated with 7 sheets at: " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }

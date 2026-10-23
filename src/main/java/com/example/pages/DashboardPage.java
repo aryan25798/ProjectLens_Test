@@ -32,6 +32,10 @@ public class DashboardPage extends BasePage {
         return false;
     }
 
+    public boolean isSignOutDisplayed() {
+        return isDisplayed(signOutButton);
+    }
+
     public void logout() {
         WebElement btn = WaitUtils.waitForElementVisible(driver, signOutButton, 10);
         try {

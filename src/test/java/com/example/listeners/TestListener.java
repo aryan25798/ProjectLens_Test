@@ -137,6 +137,8 @@ public class TestListener implements ITestListener, ISuiteListener {
                 return "Notification Module";
             case "ReviseSubmissionTest":
                 return "Revise Submission Module";
+            case "FormDataUpdationTest":
+                return "Form Data Updation Module";
             default:
                 return fallback != null && !fallback.isEmpty() ? fallback : "General Tests";
         }

@@ -29,4 +29,9 @@
             <class name="com.example.tests.ReviseSubmissionTest"/>
         </classes>
     </test>
+    <test name="Form Data Updation Module Tests">
+        <classes>
+            <class name="com.example.tests.FormDataUpdationTest"/>
+        </classes>
+    </test>
 </suite>

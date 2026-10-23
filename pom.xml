@@ -175,5 +175,25 @@
                 <suiteXmlFile>testng-revise.xml</suiteXmlFile>
             </properties>
         </profile>
+
+        <!-- Form Data Updation Module Only -->
+        <profile>
+            <id>fdu</id>
+            <properties>
+                <suiteXmlFile>testng-form-data-updation.xml</suiteXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>formdata</id>
+            <properties>
+                <suiteXmlFile>testng-form-data-updation.xml</suiteXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>update</id>
+            <properties>
+                <suiteXmlFile>testng-form-data-updation.xml</suiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
 </project>

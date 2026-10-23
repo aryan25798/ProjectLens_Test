@@ -116,4 +116,35 @@ public class ReviewsPage extends BasePage {
     public boolean isQueueEmpty() {
         return isDisplayed(emptyQueueState) || getQueueItemCount() == 0;
     }
+
+    public boolean isProjectInQueue(String projectTitleText) {
+        List<WebElement> items = driver.findElements(reviewItems);
+        for (WebElement item : items) {
+            if (item.getText().toLowerCase().contains(projectTitleText.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void selectSubmissionByTitle(String projectTitleText) {
+        List<WebElement> items = driver.findElements(reviewItems);
+        for (WebElement item : items) {
+            if (item.getText().toLowerCase().contains(projectTitleText.toLowerCase())) {
+                item.click();
+                return;
+            }
+        }
+        if (!items.isEmpty()) {
+            items.get(0).click();
+        }
+    }
+
+    public String getDetailPanelContent() {
+        try {
+            return getText(detailPanel);
+        } catch (Exception e) {
+            return "";
+        }
+    }
 }
